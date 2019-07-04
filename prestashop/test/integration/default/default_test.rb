@@ -17,7 +17,7 @@ end
 
 
 ## Check if docker is running
-describe package('docker') do  it { should be_installed }
+describe service('docker') do  it { should be_installed }
 end  
 
 ## check if prestashop CONTAINER is running
@@ -27,9 +27,6 @@ describe docker_container('prestashop') do
 end
 
 ## Check if prestashop is listening on port 80
-describe port(80) do
-    it { should be_listening }
-    its('processes') { should include 'prestashop' }
-  end
-
-
+describe docker_container(name: 'prestashop') do
+  its('ports') { should eq '0.0.0.0:80->80/tcp' }
+end
