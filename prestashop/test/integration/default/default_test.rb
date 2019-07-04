@@ -12,5 +12,24 @@ end
 
 # This is an example test, replace it with your own test.
 describe port(80), :skip do
-  it { should_not be_listening }
+  it { should be_listening }
 end
+
+
+## Check if docker is running
+describe package('docker') do  it { should be_installed }
+end  
+
+## check if prestashop CONTAINER is running
+describe docker_container('prestashop') do
+  it { should exist }
+  it { should be_running }
+end
+
+## Check if prestashop is listening on port 80
+describe port(80) do
+    it { should be_listening }
+    its('processes') { should include 'prestashop' }
+  end
+
+
