@@ -1,6 +1,6 @@
-# prestashop CHANGELOG
+# dockertest CHANGELOG
 
-This file is used to list changes made in each version of the prestashop cookbook.
+This file is used to list changes made in each version of the dockertest cookbook.
 
 # 0.1.0
 
